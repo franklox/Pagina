@@ -74,6 +74,7 @@
                     <h3><a href="shop-single.php?id=<?php echo $fila['id'];?>"><?php echo $fila['nombre'];?></a></h3>
                     <!--<p class="mb-0"><?php echo $fila['descripcion'];?></p>-->
                     <p class="text-primary font-weight-bold">$<?php echo $fila['precio'];?></p>
+                    <p>El JUANITO SE LA COME</p>
                   </div>
                 </div>
               </div>
