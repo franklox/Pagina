@@ -134,8 +134,8 @@
                       </div>
 
                     </td>
-                    <td>$<?php $arregloCarrito[$i]['Precio']*$arregloCarrito[$i]['Cantidad']; ?></td>
-                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
+                    <td>$<?php echo $arregloCarrito[$i]['Precio']*$arregloCarrito[$i]['Cantidad']; ?></td>
+                    <td><a href="#" class="btn btn-primary btn-sm btnEliminar" data-id="<?php echo $arregloCarrito[$i]['Id'];?>">X</a></td>
                   </tr>
                 <?php } } ?>
                 </tbody>
@@ -214,8 +214,25 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
-
   <script src="js/main.js"></script>
+  <script> 
+    $(document).ready(function(){
+      $(".btnEliminar").click(function(event){
+          event.preventDefault();
+          var id = $(this).data('id');
+          var boton = $(this);
+          $.ajax({
+            method:'POST',
+            url:'./php/eliminarCarrito.php',
+            data:{
+              id:id
+            }
+          }).done(function(respuesta){
+            boton.parent('td').parent('tr').remove();
+          });
+      });
+    });
+  </script>
     
   </body>
 </html>
