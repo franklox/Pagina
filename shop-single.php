@@ -60,7 +60,7 @@
             </div>
 
             </div>
-            <p><a href="cart.php?id= <?php echo $fila[0]; ?>" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+            <p><a href="cart.php?id=<?php echo $fila[0]; ?>" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
 
           </div>
         </div>

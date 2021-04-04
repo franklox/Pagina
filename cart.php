@@ -125,16 +125,20 @@
                     <td>
                       <div class="input-group mb-3" style="max-width: 120px;">
                         <div class="input-group-prepend">
-                          <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                          <button class="btn btn-outline-primary js-btn-minus btnIncrementar" type="button">&minus;</button>
                         </div>
-                        <input type="text" class="form-control text-center" value="<?php echo $arregloCarrito[$i]['Cantidad']; ?>" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input type="text" class="form-control text-center txtCantidad"
+                        data-precio="<?php echo $arregloCarrito[$i]['Precio']; ?>"
+                        data-id="<?php echo $arregloCarrito[$i]['Id']; ?>"
+                        value="<?php echo $arregloCarrito[$i]['Cantidad']; ?>" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                         <div class="input-group-append">
-                          <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                          <button class="btn btn-outline-primary js-btn-plus btnIncrementar" type="button">&plus;</button>
                         </div>
                       </div>
 
                     </td>
-                    <td>$<?php echo $arregloCarrito[$i]['Precio']*$arregloCarrito[$i]['Cantidad']; ?></td>
+                    <td class="cant<?php echo $arregloCarrito[$i]['Id']; ?>">
+                    $<?php echo $arregloCarrito[$i]['Precio']*$arregloCarrito[$i]['Cantidad']; ?></td>
                     <td><a href="#" class="btn btn-primary btn-sm btnEliminar" data-id="<?php echo $arregloCarrito[$i]['Id'];?>">X</a></td>
                   </tr>
                 <?php } } ?>
@@ -231,6 +235,32 @@
             boton.parent('td').parent('tr').remove();
           });
       });
+      $(".txtCantidad").keyup(function(){
+        var cantidad = $(this).val();
+        var precio = $(this).data('precio');
+        var id = $(this).data('id');
+        incremento(cantidad,precio,id);
+      });
+      $(".btnIncrementar").click(function(){
+        var precio = $(this).parent('div').parent('div').find('input').data('precio');
+        var id = $(this).parent('div').parent('div').find('input').data('id');
+        var cantidad = $(this).parent('div').parent('div').find('input').val();
+        incremento(cantidad,precio,id);
+      });
+      function incremento(cantidad,precio,id){
+        var mult = parseFloat(cantidad)* parseFloat(precio);
+        $(".cant"+id).text("$"+mult);
+        $.ajax({
+            method:'POST',
+            url:'./php/actualizar.php',
+            data:{
+              id:id,
+              cantidad:cantidad
+            }
+          }).done(function(respuesta){
+            
+          });
+      }
     });
   </script>
     
