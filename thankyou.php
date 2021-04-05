@@ -39,6 +39,7 @@
     ".$arreglo[$i]['Precio'].",
     ".$arreglo[$i]['Precio'] * $arreglo[$i]['Cantidad']."
     )") or die($conexion -> error);
+    $conexion->query("update productos set inventario =inventario-".$arreglo[$i]['Cantidad']." where id=".$arreglo[$i]['Id'] )or die($conexion->error);
   }
   $conexion->query("insert into envio(pais,company,direccion,estado,cp,id_venta) values
   (

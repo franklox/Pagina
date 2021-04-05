@@ -62,7 +62,7 @@
             <div class="row mb-5">
             <?php 
             include('./php/conexion.php');
-            $resultado = $conexion -> query("select * from productos order by id DESC limit 12") or die($conexion -> error);
+            $resultado = $conexion -> query("select * from productos where inventario>0 order by id DESC limit 12") or die($conexion -> error);
             while($fila = mysqli_fetch_array($resultado)) {
             ?>
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
