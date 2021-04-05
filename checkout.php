@@ -1,8 +1,8 @@
 <?php 
   session_start();
   include("./php/conexion.php");
-  if(isset($_SESSION['carrito'])){
-    header('Location ./index.php');
+  if(!isset($_SESSION['carrito'])){
+    header('Location: ./index.php');
   }
 
 $arreglo = $_SESSION['carrito'];
