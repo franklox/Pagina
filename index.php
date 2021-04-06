@@ -62,7 +62,22 @@
             <div class="row mb-5">
             <?php 
             include('./php/conexion.php');
-            $resultado = $conexion -> query("select * from productos where inventario>0 order by id DESC limit 12") or die($conexion -> error);
+            /*for($i=0;$i<21;$i++){
+              $conexion->query("insert into productos (nombre,descripcion, precio,imagen,inventario,id_categoria) 
+              values(
+                'Producto $i','Somos unos cracks',".rand(1000,100000).",'monitor.jpg',".rand(3,25).",12
+              )") or die($conexion->error);
+            }*/
+            $limite = 12; //Productos por página
+            $totalQuery = $conexion->query('select count(*) from productos') or die($conexion->error);
+            $totalProductos = mysqli_fetch_row($totalQuery);
+            $totalBotones = round($totalProductos[0] / $limite); //Botones Paginación
+            if(isset($_GET['limite'])){
+              $resultado = $conexion -> query("select * from productos where inventario>0 limit ".$_GET['limite'].",".$limite) or die($conexion -> error);
+
+            }else{
+              $resultado = $conexion -> query("select * from productos where inventario>0 order by id DESC limit ".$limite) or die($conexion -> error);
+            }
             while($fila = mysqli_fetch_array($resultado)) {
             ?>
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
@@ -74,7 +89,7 @@
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="shop-single.php?id=<?php echo $fila['id'];?>"><?php echo $fila['nombre'];?></a></h3>
-                    <!--<p class="mb-0"><?php echo $fila['descripcion'];?></p>-->
+                    <?php echo $fila['descripcion'];?></p>
                     <p class="text-primary font-weight-bold">$<?php echo $fila['precio'];?></p>
                   </div>
                 </div>
@@ -86,13 +101,32 @@
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
                   <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
+                    
+                    <?php 
+                      
+                      if(isset($_GET['limite'])){
+                          if($_GET['limite']>0){
+                            echo '<li><a href="index.php?limite='.($_GET['limite']-12).'">&lt;</a></li>';
+                          }
+                      }
+                      
+                      
+                      for($f=0;$f<$totalBotones;$f++){
+                        echo '<li><a href="index.php?limite='.($f*12).'">'.($f+1).'</a></li>';
+                      }
+                      
+                      if(isset($_GET['limite'])){
+                        if($_GET['limite']+12 <$totalBotones*12){
+                          echo '<li><a href="index.php?limite='.($_GET['limite']+12).'">&gt;</a></li>';
+                        }
+                      }else{
+                        echo '<li><a href="index.php=?limite=12">&gt</a></li>';
+                      }
+                        
+                    
+
+                    ?>
+                    
                   </ul>
                 </div>
               </div>
