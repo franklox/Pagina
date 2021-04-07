@@ -149,10 +149,11 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="./dashboard/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../images/users/<?php echo $arregloUsuario['imagen'];?>" class="img-circle elevation-2" 
+            alt="<?php echo $arregloUsuario['nombre'];?>">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Cabeza de Bala</a>
+          <a href="#" class="d-block"><?php echo $arregloUsuario['nombre'];?></a>
         </div>
       </div>
 
@@ -189,6 +190,11 @@
               </p>
             </a>
           </li>
+          <?php 
+            if($arregloUsuario['nivel']=='admin'){
+
+            
+          ?>
           <li class="nav-item">
             <a href="./productos.php" class="nav-link">
               <i class="nav-icon fa fa-store-alt"></i>
@@ -202,6 +208,15 @@
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Usuarios
+              </p>
+            </a>
+          </li>
+          <?php } ?>
+          <li class="nav-item">
+            <a href="../php/cerrar_sesion.php" class="nav-link">
+              <i class="nav-icon fa fa-pray"></i>
+              <p>
+                Cerrar Sesión
               </p>
             </a>
           </li>
