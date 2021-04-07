@@ -51,6 +51,7 @@
     $id_venta
   ) 
   ")or die($conexion->error);
+  include "./php/mail.php";
   unset($_SESSION['carrito']);
 ?>
 
