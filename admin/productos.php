@@ -1,5 +1,6 @@
 <?php 
   session_start();
+  include "../php/conexion.php";
   if(!isset($_SESSION['datos_login'])){
     header("Location: ../index.php");
   }
@@ -7,6 +8,10 @@
   if($arregloUsuario['nivel']!='admin'){
     header("Location: ../index.php");
   }
+  $resultado = $conexion ->query("select productos.*, categorias.nombre as catego from 
+  productos 
+  inner join categorias on productos.id_categoria = categorias.id
+  order by id DESC") or die(conexion->error);
 ?>
 
 <!DOCTYPE html>
@@ -58,11 +63,10 @@
           <div class="col-sm-6">
             <h1 class="m-0">Productos</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
-            </ol>
+          <div class="col-sm-6 text-right">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-plus"></i> Insertar Producto
+          </button>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -72,12 +76,109 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+      <?php
+        if(isset($_GET['error'])){
+      ?>
+      <div class="alert alert-danger" role="alert">
+        <?php echo $_GET['error'];?>
+      </div>
+      <?php } ?>
+      <?php
+        if(isset($_GET['success'])){
+      ?>
+      <div class="alert alert-success" role="alert">
+        Se ha insertado correctamente!
+      </div>
+      <?php } ?>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Descripcion</th>
+              <th>Inventario</th>
+              <th>Categoria</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <?php
+              while($f = mysqli_fetch_array($resultado)){
 
+              
+            ?>
+            <tr>
+              <td><?php echo $f['id'];?></td>
+              <td>
+                <img src="../images/<?php echo $f['imagen'];?>" width="20px"; height="20px";>
+                <?php echo $f['nombre'];?>
+              </td>
+              <td><?php echo $f['descripcion'];?></td>
+              <td><?php echo $f['inventario'];?></td>
+              <td><?php echo $f['catego'];?></td>
+              <td></td>
+            </tr>
+            <?php
+              }
+            ?>
+          </tbody>
+        </table>
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
-  
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form action="../php/insertarproducto.php" method="POST" enctype="multipart/form-data">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Insertar Producto</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="nombre" placeholder="Nombre" id="nombre" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Descripcion</label>
+                <input type="text" name="descripcion" placeholder="Descripcion" id="descripcion" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Imagen</label>
+                <input type="file" name="imagen" id="imagen" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Precio</label>
+                <input type="number" min="0" name="precio" placeholder="Precio" id="precio" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Inventario</label>
+                <input type="text" name="inventario" placeholder="Inventario" id="inventario" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Categorias</label>
+                <select name="categoria" id="categoria" class="form-control" required>
+                  <?php
+                    $res= $conexion->query("select * from categorias");
+                    while($f=mysqli_fetch_array($res)){
+                      echo '<option value="'.$f['id'].'">'.$f['nombre'].'</option>';
+                    }
+                  ?>
+                </select>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="sumbit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>  
+      </div>
+    </div>
+  </div>
   <?php include "./layouts/footer.php";?>
 </div>
 <!-- ./wrapper -->
