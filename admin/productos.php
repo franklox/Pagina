@@ -96,6 +96,7 @@
               <th>Id</th>
               <th>Nombre</th>
               <th>Descripcion</th>
+              <th>Precio</th>
               <th>Inventario</th>
               <th>Categoria</th>
               <th></th>
@@ -115,15 +116,30 @@
                 <?php echo $f['nombre'];?>
               </td>
               <td><?php echo $f['descripcion'];?></td>
+              <td>$<?php echo number_format($f['precio'],2,'.','');?></td>
               <td><?php echo $f['inventario'];?></td>
               <td><?php echo $f['catego'];?></td>
               <td>
-                <button class="btn btn-danger btn-small btnEliminar" 
-                data-id="<?php echo $f['id'];?>"
-                data-toggle="modal" data-target="#modalEliminar">
-                  <i class="fa fa-trash"></i>
-                </button>
-              </td>
+                <!-- Botón Editar-->
+                <button class="btn btn-warning btn-small btnEditar" 
+                  data-id="<?php echo $f['id'];?>"
+                  data-nombre="<?php echo $f['nombre'];?>"
+                  data-descripcion="<?php echo $f['descripcion'];?>"
+                  data-precio="<?php echo $f['precio'];?>"
+                  data-inventario="<?php echo $f['inventario'];?>"
+                  data-categoria="<?php echo $f['id_categoria'];?>"
+                  data-toggle="modal" data-target="#modalEditar">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                </td>
+                  <!-- Botón Eliminar-->
+                <td>
+                  <button class="btn btn-danger btn-small btnEliminar" 
+                  data-id="<?php echo $f['id'];?>"
+                  data-toggle="modal" data-target="#modalEliminar">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
             </tr>
             <?php
               }
@@ -206,7 +222,59 @@
     </div>
   </div>
 
-
+<!-- Editar -->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditar" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form action="../php/editarproducto.php" method="POST" enctype="multipart/form-data">
+          <div class="modal-header">
+              <h5 class="modal-title" id="modalEditar">Editar Producto</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+          <input type="hidden" id="idEdit" name="id">
+              <div class="form-group">
+                <label for="nombreEdit">Nombre</label>
+                <input type="text" name="nombre" placeholder="Nombre" id="nombreEdit" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="descripcionEdit">Descripcion</label>
+                <input type="text" name="descripcion" placeholder="Descripcion" id="descripcionEdit" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="imagen">Imagen</label>
+                <input type="file" name="imagen" id="imagen" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="precioEdit">Precio</label>
+                <input type="number" min="0" name="precio" placeholder="Precio" id="precioEdit" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="inventarioEdit">Inventario</label>
+                <input type="text" name="inventario" placeholder="Inventario" id="inventarioEdit" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="categoriaEdit">Categorias</label>
+                <select name="categoria" id="categoriaEdit" class="form-control" required>
+                  <?php
+                    $res= $conexion->query("select * from categorias");
+                    while($f=mysqli_fetch_array($res)){
+                      echo '<option value="'.$f['id'].'">'.$f['nombre'].'</option>';
+                    }
+                  ?>
+                </select>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="sumbit" class="btn btn-primary editar">Guardar</button>
+          </div>
+        </form>  
+      </div>
+    </div>
+  </div>
 
   <?php include "./layouts/footer.php";?>
 </div>
@@ -250,6 +318,7 @@
 <script>
 $(document).ready(function(){
   var idEliminar=-1;
+  var idEditar=-1;
   var fila;
   $(".btnEliminar").click(function(){
     idEliminar=$(this).data('id');
@@ -265,9 +334,21 @@ $(document).ready(function(){
     }).done(function(res){
       $(fila).fadeOut(1000);
     });
-    
   });
-
+  $(".btnEditar").click(function(){
+    idEditar=$(this).data('id');
+    var nombre=$(this).data('nombre');
+    var descripcion=$(this).data('descripcion');
+    var precio=$(this).data('precio');
+    var inventario=$(this).data('inventario');
+    var categoria=$(this).data('categoria');
+    $("#idEdit").val(idEditar);
+    $("#nombreEdit").val(nombre);
+    $("#descripcionEdit").val(descripcion);
+    $("#precioEdit").val(precio);
+    $("#inventarioEdit").val(inventario);
+    $("#categoriaEdit").val(categoria);
+  });
 });
 </script>
 
