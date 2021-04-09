@@ -19,6 +19,7 @@
           {
             $arreglo[$numero]['Cantidad']= $arreglo[$numero]['Cantidad']+1;
             $_SESSION['carrito'] =$arreglo;
+            header("Location: ./cart.php");
           }else
           { //No hay petición se realiza nueva consulta
             $nombre ="";
@@ -38,6 +39,7 @@
             );
             array_push($arreglo, $arregloNuevo);
             $_SESSION['carrito'] = $arreglo;
+            header("Location: ./cart.php");
           }
         }
   }else
@@ -60,6 +62,7 @@
               'Cantidad' => 1          
         );
         $_SESSION['carrito']=$arreglo;
+        header("Location: ./cart.php");
       }
   }
 ?>

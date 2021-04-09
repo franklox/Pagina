@@ -175,39 +175,21 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="./index.php" class="nav-link">
+            <a href="../index.php" class="nav-link">
               <i class="nav-icon fa fa-home"></i>
               <p>
-                Inicio
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="./pedidos.php" class="nav-link">
-              <i class="nav-icon fa fa-shipping-fast"></i>
-              <p>
-                Pedidos
+                Ir a la Tienda
               </p>
             </a>
           </li>
           <?php 
             if($arregloUsuario['nivel']=='admin'){
-
-            
           ?>
           <li class="nav-item">
             <a href="./productos.php" class="nav-link">
               <i class="nav-icon fa fa-store-alt"></i>
               <p>
                 Productos
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="./usuarios.php" class="nav-link">
-              <i class="nav-icon fa fa-users"></i>
-              <p>
-                Usuarios
               </p>
             </a>
           </li>

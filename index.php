@@ -1,3 +1,7 @@
+<?php 
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -137,9 +141,25 @@
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" class="d-flex"><span>Men</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Women</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Children</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                <?php 
+                  $re= $conexion->query("select * from categorias");
+                  while($f=mysqli_fetch_array($re)){
+                
+                ?>
+                <li class="mb-1">
+                  <a href="./busqueda.php?texto=<?php echo $f['nombre']?>" class="d-flex">
+                    <span><?php echo $f['nombre'];?></span> 
+                    <span class="text-black ml-auto">
+                    <?php   
+                        $re2 = $conexion->query("select count(*) from productos where
+                        id_categoria =".$f['id']);
+                        $fila = mysqli_fetch_row($re2);
+                        echo $fila[0];
+                    ?>
+                    </span>   
+                </a></li>
+
+              <?php } ?>
               </ul>
             </div>
 
