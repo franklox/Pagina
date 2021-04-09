@@ -3,7 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in</title>
+  <title>Iniciar Sesión</title>
+  <style>
+    .card{
+      width: 400px;
+      height: auto; 
+    }
+  
+  </style>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -11,18 +18,26 @@
   <link rel="stylesheet" href="./admin/dashboard/plugins/fontawesome-free/css/all.min.css">
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="./admin/dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="./admin/dashboard/dist/css/adminlte.min.css">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
+<body>
+<?php include("./layouts/header.php"); ?> 
+<br>
+
+<div class="login-box text-center">
   <div class="login-logo">
-    <a href="./index.php"><b>FYElectronics</b></a>
+    <h3><a href="./index.php"><b>Freh Yam Electronics</b></a></h3>
   </div>
   <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+  <div class="card text-dark bg-light mb-3 text-center" style="margin-left: 475px;">
+    <div class="card-body">
+      <h3><b><p class="login-box-msg text-center">Inicia Sesión</p></b></h3>
 
       <form action="./php/check.php" method="post">
         <div class="input-group mb-3">
@@ -45,14 +60,14 @@
           <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
-              <label for="remember">
+              <label for="remember" style="float:left;">
                 Remember Me
               </label>
             </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <button type="submit" class="btn btn-outline-primary btn-block">Ingresar</button>
           </div>
           <!-- /.col -->
           <br>
@@ -66,12 +81,6 @@
         </div>
       </form>
 
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
-      </p>
     </div>
     <!-- /.login-card-body -->
   </div>
@@ -84,5 +93,7 @@
 <script src="./admin/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="./admin/dashboard/dist/js/adminlte.min.js"></script>
+
+<?php include("./layouts/footer.php"); ?> 
 </body>
 </html>
