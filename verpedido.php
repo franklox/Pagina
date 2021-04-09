@@ -65,32 +65,32 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Nombre <?php echo $datos_Usuario[4];?> </label>        
+                            <label for="c_fname" class="text-black">Nombre: <?php echo $datos_Usuario[6];?> </label>        
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Email <?php echo $datos_Usuario[6];?> </label>        
+                            <label for="c_fname" class="text-black">Email: <?php echo $datos_Usuario[8];?> </label>        
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Telefono <?php echo $datos_Usuario[5];?> </label>        
+                            <label for="c_fname" class="text-black">Telefono: <?php echo $datos_Usuario[7];?> </label>        
                         </div>
                     </div> 
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Compañia <?php echo $datosEnvio[2];?> </label>        
+                            <label for="c_fname" class="text-black">Compañia: <?php echo $datosEnvio[2];?> </label>        
                         </div>
                     </div> 
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Dirección <?php echo $datosEnvio[3];?> </label>        
+                            <label for="c_fname" class="text-black">Dirección: <?php echo $datosEnvio[3];?> </label>        
                         </div>
                     </div>   
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Estado <?php echo $datosEnvio[4];?> </label>        
+                            <label for="c_fname" class="text-black">Estado/Pais: <?php echo $datosEnvio[4];?> </label>        
                         </div>
                     </div>     
                 </div>

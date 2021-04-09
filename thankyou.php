@@ -1,9 +1,6 @@
-<?php
-  if(isset($_GET['id_venta']) && isset($_GET['metodo'])){
-    include "./php/conexion.php";
-    $conexion->query("insert into pagos (id_venta,metodo) values(".$_GET['id_venta'].",'".$_GET['metodo']."')")or die($conexion->error);
-    header("Location: ./thankyou.php?id_venta=".$_GET['id_venta']);
-  }
+
+<?php 
+     session_start();
 ?>
 
 <!DOCTYPE html>
@@ -37,12 +34,12 @@
             <span class="icon-check_circle display-3 text-success"></span>
             <h2 class="display-3 text-black">Thank you!</h2>
             <p class="lead mb-5">You order was successfuly completed.</p>
-            <p><a href="verpedido.php?id_venta=<?php echo $id_venta;?>" class="btn btn-sm btn-primary">Ver Pedido</a></p>
+            <p><a href="index.php" class="btn btn-sm btn-primary">Regresar a la tienda</a></p>
           </div>
         </div>
       </div>
     </div>
-    
+
     <?php include("./layouts/footer.php"); ?> 
 
   </div>

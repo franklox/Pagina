@@ -65,17 +65,17 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Nombre <?php echo $datos_Usuario[4];?> </label>        
+                            <label for="c_fname" class="text-black">Nombre <?php echo $datos_Usuario[6];?> </label>        
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Email <?php echo $datos_Usuario[6];?> </label>        
+                            <label for="c_fname" class="text-black">Email <?php echo $datos_Usuario[8];?> </label>        
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Telefono <?php echo $datos_Usuario[5];?> </label>        
+                            <label for="c_fname" class="text-black">Telefono <?php echo $datos_Usuario[7];?> </label>        
                         </div>
                     </div> 
                     <div class="form-group row">
@@ -97,8 +97,18 @@
             </form>
           </div>
           <div class="col-md-5 ml-auto">
-          
-                <h1 >Total:  <?php echo $datos_Usuario[2];?></h1>
+          <?php
+            while($f = mysqli_fetch_array($datos3)){
+          ?>
+            <div class="p-4 border mb-3">
+                <img src="./images/<?php echo $f['imagen'];?>" width="50px"/>
+              <span class="d-block text-primary h6 text-uppercase"><?php echo $f['nombre_producto'];?></span> <br>
+              <span class="d-block text-primary h6 text-uppercase">Cantidad:<?php echo $f['cantidad'];?></span>
+              <span class="d-block text-primary h6 text-uppercase">Precio:<?php echo $f['precio'];?></span>
+              <span class="d-block text-primary h6 text-uppercase">Subtotal:<?php echo $f['subtotal'];?></span>
+            </div>
+            <?php } ?>
+                <h1 >Total: $<?php echo number_format($datos_Usuario[2],2,'.','');?></h1>
                 <form>
                 </form>
                 <div id="paypal-button-container"></div>
