@@ -1,6 +1,11 @@
 
 <?php 
      session_start();
+     if(isset($_GET['id_venta']) && isset($_GET['metodo'])){
+      include "./php/conexion.php";
+      $conexion->query("insert into pagos (id_venta,metodo) values(".$_GET['id_venta'].",'".$_GET['metodo']."')")or die($conexion->error);
+      header("Location: ./thankyou.php?id_venta=".$_GET['id_venta']);
+    }
 ?>
 
 <!DOCTYPE html>
