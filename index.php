@@ -24,6 +24,49 @@
     <link rel="stylesheet" href="css/style.css">
     
   </head>
+  <style>
+    .container-menu{
+    background-color: rgb(245, 245, 245);
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+.header-menu{
+    background-color: #333;
+    color: white;
+    height: 70px;
+    text-align: center;
+    margin-top: 0px;
+    font-family: sans-serif;
+}
+
+.container-menu a{
+    color: #666;
+    display: block;
+    width: 100%;
+    line-height: 60px;
+    text-decoration: none;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-left: rgb(211, 211, 211) 1px solid;
+    border-bottom: rgb(211, 211, 211) 1px solid;
+    border-right: rgb(211, 211, 211) 1px solid;
+}
+
+.title{
+  color:black;
+}
+
+.container-menu i{
+    margin-right: 10px;
+}
+
+.container-menu a:hover{
+    background-color: white;
+    color: #1765be;
+    border-left: #1765be 2px solid;
+}
+  </style>
   <body>
   
   <div class="site-wrap">
@@ -34,16 +77,29 @@
 
         <div class="row mb-5">
           <div class="col-md-9 order-2">
-
-            <div class="row">
-              <div class="col-md-12 mb-5">
-                <div class="float-md-left mb-4"><h2 class="text-black h5">Shop All</h2></div>
-                <div class="d-flex">
-
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./images/Captura.png" class="d-block w-100">
                 </div>
-              </div>
+                <div class="carousel-item">
+                    <img src="./images/Captura2.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/Captura.png" class="d-block w-100">
+                </div>
             </div>
-            <div class="row mb-5">
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <h4 class="mt-5 title">Nuestros Productos:</h4>
+            <div class="row mb-5 mt-4">
             <?php 
             include('./php/conexion.php');
             /*for($i=0;$i<21;$i++){
@@ -65,21 +121,21 @@
             while($fila = mysqli_fetch_array($resultado)) {
             ?>
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border"  style="width: 250px; height: 600px">
+                <div class="block-4 text-center border"  style="width: 250px; height: 400px">
                   <figure class="block-4-image">
                     <a href="shop-single.php?id=<?php echo $fila['id'];?>">
-                    <img src="images/<?php echo $fila['imagen'];?>"  alt="<?php echo $fila['nombre'];?>" class="img-fluid">
+                    <img src="images/<?php echo $fila['imagen'];?>"  alt="<?php echo $fila['nombre'];?>" class="img-fluid" style="height:200px;">
                     </a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.php?id=<?php echo $fila['id'];?>"><?php echo $fila['nombre'];?></a></h3>
-                    <p class="text-primary font-weight-bold">$<?php echo number_format($fila['precio'],'2','.','');?></p>
+                    <h6><a style="text-align:center; color:black;" href="shop-single.php?id=<?php echo $fila['id'];?>"><?php echo $fila['nombre'];?></a></h6>
+                    <p style="text-align:center; color:green; font-size:20px; font-weight:bold;">$<?php echo number_format($fila['precio'],'2','.','');?></p>
                   </div>
                 </div>
               </div>
             <?php } ?>
 
-            </div>
+          </div>
             <div class="row" data-aos="fade-up">
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
@@ -114,20 +170,27 @@
               </div>
             </div>
           </div>
+
+
+          
+       
+
                       <!--Categorias-->
-          <div class="col-md-3 order-1 mb-5 mb-md-0">
-            <div class="border p-4 rounded mb-4">
-              <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
-              <ul class="list-unstyled mb-0">
+          <div class="col-md-3">
+            <div class="header-menu">
+              <br>
+              <h5>CATEGORÍAS</h5>
+            </div>  
+            <div class="container-menu">
                 <?php 
                   $re= $conexion->query("select * from categorias");
                   while($f=mysqli_fetch_array($re)){
                 
                 ?>
-                <li class="mb-1">
+                <a>
                   <a href="./busqueda.php?texto=<?php echo $f['nombre']?>" class="d-flex">
                     <span><?php echo $f['nombre'];?></span> 
-                    <span class="text-black ml-auto">
+                    <span class="text-black ml-auto" style="margin-right:10px;">
                     <?php   
                         $re2 = $conexion->query("select count(*) from productos where
                         id_categoria =".$f['id']);
@@ -135,10 +198,10 @@
                         echo $fila[0];
                     ?>
                     </span>   
-                </a></li>
+                </a></a>
 
               <?php } ?>
-              </ul>
+                  </div>
             </div>
 
            
