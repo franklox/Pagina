@@ -56,33 +56,34 @@
         </script>
 
 <?php include("./layouts/header.php"); ?>
-<h2 class="margen" style="margin-left: 100px;">Datos de la compra</h2>
+<h2 class="margen" style="margin-left: 100px; color: black; font-weight:bold;">Datos de la compra</h2>
 <div class="container margen">
   <div class="card-columns" width="200px;" height="1000px;">
           <?php
             while($f = mysqli_fetch_array($datos3)){
           ?>
-          <div class="card">
-          <img src="./images/<?php echo $f['imagen'];?>" class="card-img-top" width="50px" height="200px"/>
+          <div class="card" style="width: 300px; height: 430px">
+          <img src="./images/<?php echo $f['imagen'];?>" class="card-img-top"/>
           <div class="card-body">
-            <h5 class="card-title"><?php echo $f['nombre_producto'];?></h5>
-            <p class="card-text">Cantidad: <?php echo $f['cantidad'];?></p>
-            <p class="card-text">Precio: $<?php echo number_format($f['cantidad'],2,'.','');?></p>
-            <p class="card-text">Subtotal: $<?php echo number_format($f['subtotal'],2,'.','');?></p>
+            <h5 class="card-title"style="color:black; font-weight:bold;"><?php echo $f['nombre_producto'];?></h5>
+            <p class="card-text" style="color:black; font-size:20px;">Cantidad: <?php echo $f['cantidad'];?></p>
+            <p class="card-text" style="color:black; font-size:20px;">Precio: $<?php echo number_format($f['precio'],2,'.','');?></p>
+            <p class="card-text" style="color:green; font-size:20px; font-weight:bold;">Subtotal: $<?php echo number_format($f['subtotal'],2,'.','');?></p>
           </div>
           <div class="card-footer  text-center">
             <small class="text-muted">Se ve que rifa en la vida</small>
           </div>
         </div>
       <?php } ?>
-      <div class="card">
+      <div class="card" style="width: 300px; height: 430px">
           <div class="card-body">
-            <p class="card-text">Nombre: <?php echo $datos_Usuario[6];?></p>
-            <p class="card-text">Email: <?php echo $datos_Usuario[8];?></p>
-            <p class="card-text">Dirección: <?php echo $datosEnvio[3];?></p>
+            <p class="card-text" style="color:black; font-size:20px;">Nombre: <?php echo $datos_Usuario[6];?></p>
+            <p class="card-text" style="color:black; font-size:20px;">Email: <?php echo $datos_Usuario[8];?></p>
+            <p class="card-text" style="color:black; font-size:20px;">Dirección: <?php echo $datosEnvio[3];?></p>
+            <br>
           </div>
           <div class="card-footer">
-            <small class="text-muted"><h1 >Total: $<?php echo number_format($datos_Usuario[2],2,'.','');?></h1>
+            <small class="text-muted"><h1 style="color:green;">Total: $<?php echo number_format($datos_Usuario[2],2,'.','');?></h1>
                 <div id="paypal-button-container"></div></small>
           </div>
         </div>
