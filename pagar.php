@@ -58,11 +58,11 @@
 <?php include("./layouts/header.php"); ?>
 <h2 class="margen" style="margin-left: 100px; color: black; font-weight:bold;">Datos de la compra</h2>
 <div class="container margen">
-  <div class="card-columns" width="200px;" height="1000px;">
+  <div class="card-columns">
           <?php
             while($f = mysqli_fetch_array($datos3)){
           ?>
-          <div class="card" style="width: 300px; height: 430px">
+          <div class="card">
           <img src="./images/<?php echo $f['imagen'];?>" class="card-img-top"/>
           <div class="card-body">
             <h5 class="card-title"style="color:black; font-weight:bold;"><?php echo $f['nombre_producto'];?></h5>
@@ -75,7 +75,7 @@
           </div>
         </div>
       <?php } ?>
-      <div class="card" style="width: 300px; height: 430px">
+      <div class="card" >
           <div class="card-body">
             <p class="card-text" style="color:black; font-size:20px;">Nombre: <?php echo $datos_Usuario[6];?></p>
             <p class="card-text" style="color:black; font-size:20px;">Email: <?php echo $datos_Usuario[8];?></p>
