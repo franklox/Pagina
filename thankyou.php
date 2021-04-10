@@ -37,9 +37,9 @@
         <div class="row">
           <div class="col-md-12 text-center">
             <span class="icon-check_circle display-3 text-success"></span>
-            <h2 class="display-3 text-black">Thank you!</h2>
-            <p class="lead mb-5">You order was successfuly completed.</p>
-            <p><a href="index.php" class="btn btn-sm btn-primary">Regresar a la tienda</a></p>
+            <h2 class="display-3 text-black">Gracias por tu compra!</h2>
+            <p class="lead mb-5 text-center">Su orden fue completada de manera exitosa.</p>
+            <p class="text-center"><a href="index.php" class="btn btn-sm btn-dark">Regresar a la tienda</a></p>
           </div>
         </div>
       </div>
