@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
+<body class="hold-transition login-page">
 <?php include("./layouts/header.php"); ?> 
 <br>
 

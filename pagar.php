@@ -1,3 +1,15 @@
+<style>
+  .margen{
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+  .tarjeta{
+    width: 200px;
+    height: auto;
+  }
+</style>
+
+
 <?php
     include("./php/conexion.php");
     if(!isset($_GET['id_venta'])){
@@ -43,82 +55,43 @@
         <script src="https://www.paypal.com/sdk/js?client-id=AVIo2j6YEyF8aGD2Z1-Bsp_Pm1GGiGePBy6m929h-H1VNaaCohZTCmFVHsvFqDvAdoIrxRdJ7YJF9GBn&currency=MXN"> // Replace YOUR_CLIENT_ID with your sandbox client ID
         </script>
 
-            
-<div class="site-wrap">
-  <?php include("./layouts/header.php"); ?> 
-
-    <div class="site-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="h3 mb-3 text-black">Elige metodo de pago</h2>
-          </div>
-          <div class="col-md-7">
-
-            <form action="#" method="post">
-              
-                <div class="p-3 p-lg-5 border">
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Venta #<?php echo $_GET['id_venta'];?> </label>        
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Nombre <?php echo $datos_Usuario[6];?> </label>        
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Email <?php echo $datos_Usuario[8];?> </label>        
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Telefono <?php echo $datos_Usuario[7];?> </label>        
-                        </div>
-                    </div> 
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Compañia <?php echo $datosEnvio[2];?> </label>        
-                        </div>
-                    </div> 
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Dirección <?php echo $datosEnvio[3];?> </label>        
-                        </div>
-                    </div>   
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <label for="c_fname" class="text-black">Estado <?php echo $datosEnvio[4];?> </label>        
-                        </div>
-                    </div>     
-                </div>
-            </form>
-          </div>
-          <div class="col-md-5 ml-auto">
+<?php include("./layouts/header.php"); ?>
+<h2 class="margen" style="margin-left: 100px;">Datos de la compra</h2>
+<div class="container margen">
+  <div class="card-columns" width="200px;" height="1000px;">
           <?php
             while($f = mysqli_fetch_array($datos3)){
           ?>
-            <div class="p-4 border mb-3">
-                <img src="./images/<?php echo $f['imagen'];?>" width="50px"/>
-              <span class="d-block text-primary h6 text-uppercase"><?php echo $f['nombre_producto'];?></span> <br>
-              <span class="d-block text-primary h6 text-uppercase">Cantidad:<?php echo $f['cantidad'];?></span>
-              <span class="d-block text-primary h6 text-uppercase">Precio:<?php echo $f['precio'];?></span>
-              <span class="d-block text-primary h6 text-uppercase">Subtotal:<?php echo $f['subtotal'];?></span>
-            </div>
-            <?php } ?>
-                <h1 >Total: $<?php echo number_format($datos_Usuario[2],2,'.','');?></h1>
-                <form>
-                </form>
-                <div id="paypal-button-container"></div>
+          <div class="card">
+          <img src="./images/<?php echo $f['imagen'];?>" class="card-img-top" width="50px" height="200px"/>
+          <div class="card-body">
+            <h5 class="card-title"><?php echo $f['nombre_producto'];?></h5>
+            <p class="card-text">Cantidad: <?php echo $f['cantidad'];?></p>
+            <p class="card-text">Precio: $<?php echo number_format($f['cantidad'],2,'.','');?></p>
+            <p class="card-text">Subtotal: $<?php echo number_format($f['subtotal'],2,'.','');?></p>
+          </div>
+          <div class="card-footer  text-center">
+            <small class="text-muted">Se ve que rifa en la vida</small>
           </div>
         </div>
-      </div>
-    </div>
+      <?php } ?>
+      <div class="card">
+          <div class="card-body">
+            <p class="card-text">Nombre: <?php echo $datos_Usuario[6];?></p>
+            <p class="card-text">Email: <?php echo $datos_Usuario[8];?></p>
+            <p class="card-text">Dirección: <?php echo $datosEnvio[3];?></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted"><h1 >Total: $<?php echo number_format($datos_Usuario[2],2,'.','');?></h1>
+                <div id="paypal-button-container"></div></small>
+          </div>
+        </div>
+  </div>   
+ 
+</div>
 
-    <?php include("./layouts/footer.php"); ?> 
-  </div>
+<br>
+
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
@@ -150,7 +123,7 @@
         }
       }).render('#paypal-button-container'); // Display payment options on your web page
     </script>  
-    
+        <?php include("./layouts/footer.php"); ?>
     </body>
 
     </html>
