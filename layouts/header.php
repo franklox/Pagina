@@ -1,19 +1,62 @@
 <style>
-  header{
-    font-family: sans-serif;
+  .navbarsona{
+    background-color: #1765be;
+    padding-bottom:15px;
+    margin-bottom:15px;
   }
 
-  .hoverson a:hover{
-  text-decoration: none!important;
-  color: red!important;
-  font-weight: bold!important;
+  .tituloLogo{
+      color: white;
+      font-size: 20px;
+      display: inline-block;
+      font-family: sans-serif;
+  }
+
+  .searchBar{
+      width: 50000px;
+      
+      border-radius: 21px;
+  }
+
+  .letrona{
+      font-family: sans-serif;
+      color: white;
+      font-size: 16px;
+  }
+
+  .letrona a{
+      text-decoration: none;
+      color: white;
+  }
+
+  .letrona a:hover{
+      border-bottom:1px solid;
+  }
+
+
+
+
+  .letraSearch{
+      font-size: 14px;
+      color: black;
+      font-family: sans-serif;
+  }
+
+  .iconoeks{
+      border: 0px solid #1C6EA4;
+      border-radius: 21px;
+  }
+
+  .listonas{
+      list-style: none;
+      display: inline-block;
   }
   .countsoek{
     position: absolute;
           top: 0;
           right: 0;
-          margin-right: -15px;
-          margin-top: -20px;
+          margin-right: 25px;
+          margin-top: 5px;
           font-size: 13px;
           width: 24px;
           height: 24px;
@@ -27,85 +70,45 @@
           -o-transition: .2s all ease-in-out;
           transition: .2s all ease-in-out;
   }
-
-  .navbarSpace{
-    background: #fff;
-    margin-bottom: 0px;
-    z-index: 1999;
-    position: relative; }
-  .site-navbar.transparent {
-    background: transparent; }
-  .site-navbar .site-navbar-top {
-    border-bottom: 1px solid #f3f3f4;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    margin-bottom: 0px;
-  }
-  }
+  
 </style>
-
-<header class="navbarSpace site-navbar" role="banner" style="background-color:#E3E1E1;">
-      <div class="site-navbar-top">
-        <div class="container">
-          <div class="row align-items-center col-md-12">
-            
-          <div class="col-md-4">
-              <div class="site-logo">
-                <a style="font-size:18px;" href="index.php" class="js-logo-clone">FreshYam Electronics</a>
-              </div>
-              
+<nav class="navbar navbarsona">
+    <div class="row">
+        <a class="navbar-brand" href="index.php">
+            <img src="./images/shop.svg" width="100" height="45" alt="">
+            <h1 class="tituloLogo">ELECTRONICS</h1>
+        </a>
+        <form action="./busqueda.php" class="form-inline" method="GET">
+            <div class="input-group">
+                <input style="width:500px;" type="text" class="form-control searchBar letraSearch" placeholder="Hola, ¿Qué estás buscando?" name="texto">
+                <div class="input-group-append">
+                    <button style="text-decoration:none;" (click)="./busqueda.php" class="input-group-text iconoeks" id="basic-addon2"><i class="fas fa-search"></i></button>
+                </div>
             </div>
+        </form>
+    </div>
 
-            
-
-            
-
-            <div class="col-md-3 text-right site-navigation hoverson">
-              <div class="site-top-icons">
-                <ul class="site-menu js-clone-nav d-none d-md-block">
-                  <li>
-                    <a style="font-size:15px; font-weight:bold;" href="index.php">Inicio</a>
-                  </li>
-                  <li>
-                    <a style="font-size:15px; font-weight:bold;" href="about.php">Acerca de</a>
-                  </li>
-                </ul>
-              </div> 
-            </div>
-            
-            <div class="col-md-3  site-search-icon text-left">
-              <form action="./busqueda.php" class="site-block-top-search" method="GET">
-                <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search" name="texto">
-              </form>
-            </div>
-
-            <div class="col-md-2 text-right site-navigation hoverson">
-            <div class="site-top-icons">
-            <ul class="site-menu js-clone-nav d-none d-md-block letraNavbar">
-            <li>
-                    <a style="font-size:15px; font-weight:bold;" href="cart.php" class="site-cart" >Carrito
-                      <span class="icon icon-shopping_cart"></span>
-                      <span class="countsoek">
-                      <?php 
-                        if(isset($_SESSION['carrito'])){
-                          echo count($_SESSION['carrito']);
-                        }else{
-                          echo 0;
-                        }
-                      ?>
-                      </span>
-                    </a>
-                  </li> 
-                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li></div>
-            </ul>
-            </div>
-          </div>
-        </div>
-      </div> 
-      <nav class="site-navigation text-right text-md-center" role="navigation">
+    <div class="letrona">
         
-      </nav>
-    </header>
+        <a href="index.php" class="mr-5"><i class="fa fa-home mr-1" aria-hidden="true"></i>Inicio</a>
+        <a href="about.php" class="mr-5"><i class="far fa-address-card mr-1"></i>Acerca de</a>
+        <a href="cart.php" class="mr-4 site-cart" >Carrito
+          <span class="icon icon-shopping_cart"></span>
+          <span class="countsoek">
+            <?php 
+              if(isset($_SESSION['carrito'])){
+                echo count($_SESSION['carrito']);
+              }else{
+                    echo 0;
+              }
+            ?>
+          </span>
+        </a>
+        <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li></div>
+    </div>
+</nav>
+
+
+
 
     
