@@ -38,7 +38,7 @@
   }
  
 
-  $fecha = date('Y-m-d h:m:s');
+  $fecha = date('Y-m-d');
 
   $conexion -> query("insert into ventas(id_usuario,total,fecha) values($id_usuario,$total,'$fecha')") or die($conexion -> error);
   
@@ -54,10 +54,9 @@
     )") or die($conexion -> error);
     $conexion->query("update productos set inventario =inventario-".$arreglo[$i]['Cantidad']." where id=".$arreglo[$i]['Id'] )or die($conexion->error);
   }
-  $conexion->query("insert into envio(pais,company,direccion,estado,cp,id_venta) values
+  $conexion->query("insert into envio(pais,direccion,estado,cp,id_venta) values
   (
     '".$_POST['country']."',
-    '".$_POST['c_companyname']."',
     '".$_POST['c_address']."',
     '".$_POST['c_state_country']."',
     '".$_POST['c_postal_zip']."',
