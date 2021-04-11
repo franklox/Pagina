@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <div class="site-section border-bottom" data-aos="fade">
+    <div class="site-section" data-aos="fade">
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 site-section-heading text-center pt-4">
