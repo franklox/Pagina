@@ -111,7 +111,7 @@
             $limite = 12; //Productos por página
             $totalQuery = $conexion->query('select count(*) from productos') or die($conexion->error);
             $totalProductos = mysqli_fetch_row($totalQuery);
-            $totalBotones = round($totalProductos[0] / $limite); //Botones Paginación
+            $totalBotones = ($totalProductos[0] / $limite); //Botones Paginación
             if(isset($_GET['limite'])){
               $resultado = $conexion -> query("select * from productos where inventario>0 limit ".$_GET['limite'].",".$limite) or die($conexion -> error);
 
