@@ -31,6 +31,6 @@
                             inventario=".$_POST['inventario'].",
                             id_categoria=".$_POST['categoria']." 
                             where id=".$_POST['id']);
-        echo "Actualizado";
+        header("Location: ../admin/productos.php");
     }
 ?>
