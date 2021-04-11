@@ -91,7 +91,7 @@
             where 
             productos.nombre like '%".$_GET['texto']."%' or
             productos.descripcion like '%".$_GET['texto']."%' or
-            categorias.nombre like '%".$_GET['texto']."%' 
+            categorias.nombre like '%".$_GET['texto']."%' and inventario > 0
            
             
             order by id DESC limit 12") or die($conexion -> error);
@@ -135,14 +135,6 @@
                 <a>
                   <a href="./busqueda.php?texto=<?php echo $f['nombre']?>" class="d-flex">
                     <span><?php echo $f['nombre'];?></span> 
-                    <span class="text-black ml-auto" style="margin-right:10px;">
-                    <?php   
-                        $re2 = $conexion->query("select count(*) from productos where
-                        id_categoria =".$f['id']);
-                        $fila = mysqli_fetch_row($re2);
-                        echo $fila[0];
-                    ?>
-                    </span>   
                 </a></a>
 
               <?php } ?>
