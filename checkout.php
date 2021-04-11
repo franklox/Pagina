@@ -46,62 +46,47 @@ $arreglo = $_SESSION['carrito'];
             <div class="p-3 p-lg-5 border">
               <div class="form-group">
                 <label for="c_country" class="text-black">País <span class="text-danger">*</span></label>
-                <select id="c_country" class="form-control" name="country">
-                  <option value="1">Select a country</option>    
-                  <option value="2">bangladesh</option>    
-                  <option value="3">Algeria</option>    
-                  <option value="4">Afghanistan</option>    
-                  <option value="5">Ghana</option>    
-                  <option value="6">Albania</option>    
-                  <option value="7">Bahrain</option>    
-                  <option value="8">Colombia</option>    
-                  <option value="9">Dominican Republic</option>    
+                <select id="c_country" class="form-control" name="country">    
+                  <option value="México">México</option>      
                 </select>
               </div>
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="c_fname" class="text-black">Nombre(s)<span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_fname" name="c_fname">
+                  <input type="text" class="form-control" id="c_fname" name="c_fname" placeholder="Nombre(s)" required>
                 </div>
                 <div class="col-md-6">
                   <label for="c_lname" class="text-black">Apellidos <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_lname" name="c_lname">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-md-12">
-                  <label for="c_companyname" class="text-black">Company Name </label>
-                  <input type="text" class="form-control" id="c_companyname" name="c_companyname">
+                  <input type="text" class="form-control" id="c_lname" name="c_lname" placeholder="Apellidos" required>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
                   <label for="c_address" class="text-black">Dirección <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_address" name="c_address" placeholder="Dirección de Envío">
+                  <input type="text" class="form-control" id="c_address" name="c_address" placeholder="Dirección de Envío" required>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="c_state_country" class="text-black">Estado <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_state_country" name="c_state_country">
+                  <input type="text" class="form-control" id="c_state_country" name="c_state_country" placeholder="Estado" required>
                 </div>
                 <div class="col-md-6">
                   <label for="c_postal_zip" class="text-black">Código Postal <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
+                  <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip" placeholder="Código Postal" required>
                 </div>
               </div>
 
               <div class="form-group row mb-5">
                 <div class="col-md-6">
                   <label for="c_email_address" class="text-black">Correo Electrónico<span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_email_address" name="c_email_address">
+                  <input type="text" class="form-control" id="c_email_address" name="c_email_address" placeholder="Correo Electrónico" required>
                 </div>
                 <div class="col-md-6">
                   <label for="c_phone" class="text-black">Teléfono<span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Phone Number">
+                  <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Teléfono" required>
                 </div>
               </div>
 
@@ -111,7 +96,7 @@ $arreglo = $_SESSION['carrito'];
                   <div class="py-2">
                     <div class="form-group">
                       <label for="c_account_password" class="text-black">Contraseña</label>
-                      <input type="password" class="form-control" id="c_account_password" name="c_account_password" placeholder="">
+                      <input type="password" class="form-control" id="c_account_password" name="c_account_password" placeholder="Contraseña">
                     </div>
                   </div>
                 </div>
