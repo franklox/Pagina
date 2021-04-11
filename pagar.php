@@ -63,7 +63,7 @@
             while($f = mysqli_fetch_array($datos3)){
           ?>
           <div class="card">
-          <img src="./images/<?php echo $f['imagen'];?>" class="card-img-top"/>
+          <img style="width:300px; height:250px;" src="./images/<?php echo $f['imagen'];?>" class="card-img-top ml-4"/>
           <div class="card-body">
             <h5 class="card-title"style="color:black; font-weight:bold;"><?php echo $f['nombre_producto'];?></h5>
             <p class="card-text" style="color:black; font-size:20px;">Cantidad: <?php echo $f['cantidad'];?></p>
@@ -71,14 +71,14 @@
             <p class="card-text" style="color:green; font-size:20px; font-weight:bold;">Subtotal: $<?php echo number_format($f['subtotal'],2,'.','');?></p>
           </div>
           <div class="card-footer  text-center">
-            <small class="text-muted">Se ve que rifa en la vida</small>
+            <small class="text-muted">Gracias por comprar con nosotros!</small>
           </div>
         </div>
       <?php } ?>
       <div class="card" >
           <div class="card-body">
-            <p class="card-text" style="color:black; font-size:20px;">Nombre: <?php echo $datos_Usuario[6];?></p>
-            <p class="card-text" style="color:black; font-size:20px;">Email: <?php echo $datos_Usuario[8];?></p>
+            <p class="card-text" style="color:black; font-size:20px;">Nombre: <?php echo $datos_Usuario[4];?></p>
+            <p class="card-text" style="color:black; font-size:20px;">Email: <?php echo $datos_Usuario[6];?></p>
             <p class="card-text" style="color:black; font-size:20px;">Dirección: <?php echo $datosEnvio[3];?></p>
             <br>
           </div>
