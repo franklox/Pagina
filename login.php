@@ -5,11 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Iniciar Sesión</title>
   <style>
-    .card{
-      width: 400px;
-      height: auto; 
-    }
-  
+      #Contenedor{
+	width: 400px;
+	margin: 50px auto;
+	background-color: #B4ADAD;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	height: 400px;
+	border-radius:8px;
+	padding: 0px 9px 0px 9px;
+}
+
+.Encabezado span{
+      background: #1765be;
+      padding: 20px;
+      border-radius: 120px;
+}
+
+.Encabezado{
+     margin-top: 10px;
+     margin-bottom:10px; 
+     color: #FFF;
+     font-size: 20px;
+     padding-bottom: 40px;
+     text-align: center;
+}
+
+.opcioncontra{
+	text-align: center;
+	margin-top: 20px;
+	font-size: 14px;
+}
   </style>
 
   <!-- Google Font: Source Sans Pro -->
@@ -29,62 +56,31 @@
 <body class="hold-transition login-page">
 <?php include("./layouts/header.php"); ?> 
 <br>
-
-<div class="login-box text-center">
-  <div class="login-logo">
-    <h3><a href="./index.php"><b>Freh Yam Electronics</b></a></h3>
+<br>
+<div id="Contenedor">
+  <div class="Encabezado">
+                <span class="glyphicon glyphicon-user">Iniciar Sesión</span>
+              </div>
+  <div class="ContentForm">
+    <form action="./php/check.php" method="post">
+      <div class="input-group input-group-lg">
+        <input required type="email" class="form-control" placeholder="Correo Electronico" name="email">
+     </div>
+     <br>
+     <div class="input-group input-group-lg">
+        <input required type="password" class="form-control" placeholder="Password" name="password">
+     </div>
+     <br>
+     <button class="btn btn-lg btn-dark btn-block btn-signin" id="IngresoLog" type="submit">Ingresar</button>
+     <br>
+    </form>
+    <?php 
+          if(isset($_GET['error'])){
+            echo '<div class="col 12 alert alert-danger alert-dismissible fade show close" data-dismiss="alert">'.$_GET['error'].'</div>';
+        }
+?>
+  </div>	
   </div>
-  <!-- /.login-logo -->
-  <div class="card text-dark bg-light mb-3 text-center" style="margin-left: 475px;">
-    <div class="card-body">
-      <h3><b><p class="login-box-msg text-center">Inicia Sesión</p></b></h3>
-
-      <form action="./php/check.php" method="post">
-        <div class="input-group mb-3">
-          <input required type="email" class="form-control" placeholder="Email" name="email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input required type="password" class="form-control" placeholder="Password" name="password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember" style="float:left;">
-                Remember Me
-              </label>
-            </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-          <button type="submit" class="btn btn-outline-primary btn-block">Ingresar</button>
-          </div>
-          <!-- /.col -->
-          <br>
-          <br>
-          
-          <?php 
-            if(isset($_GET['error'])){
-              echo '<div class="col 12 alert alert-danger">'.$_GET['error'].'</div>';
-            }
-          ?>
-        </div>
-      </form>
-
-    </div>
-    <!-- /.login-card-body -->
-  </div>
-</div>
 <!-- /.login-box -->
 
 <!-- jQuery -->
@@ -93,7 +89,8 @@
 <script src="./admin/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="./admin/dashboard/dist/js/adminlte.min.js"></script>
-
+<br>
+<br>
 <?php include("./layouts/footer.php"); ?> 
 </body>
 </html>
