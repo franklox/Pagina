@@ -88,6 +88,9 @@
       ?>
       <div class="alert alert-success" role="alert">
         Se ha insertado correctamente!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <?php } ?>
         <table class="table">
@@ -216,7 +219,7 @@
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="sumbit" class="btn btn-danger eliminar" data-dismiss="modal">Eliminar</button>
+              <button type="submit" class="btn btn-danger eliminar" data-dismiss="modal">Eliminar</button>
           </div> 
       </div>
     </div>
