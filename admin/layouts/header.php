@@ -22,16 +22,7 @@
       </div>
 
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+      
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -46,14 +37,24 @@
               </p>
             </a>
           </li>
+          
           <?php 
             if($arregloUsuario['nivel']=='admin'){
+              
           ?>
           <li class="nav-item">
             <a href="./productos.php" class="nav-link">
               <i class="nav-icon fa fa-store-alt"></i>
               <p>
                 Productos
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="./pedidos.php" class="nav-link">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Pedidos
               </p>
             </a>
           </li>
