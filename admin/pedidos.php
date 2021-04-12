@@ -111,7 +111,7 @@
                 <p>Nombre: <?php echo $f['nombre'];?> </p>
                 <p>Email: <?php echo $f['email'];?> </p>
                 <p>Telefono: <?php echo $f['telefono'];?> </p>
-                <p>Status: <?php echo $f['Status'];?> </p>
+                
                 <?php 
                     $re=$conexion->query("select * from envio 
                     where id_venta =".$f['id']) or die($conexion->error);
@@ -139,7 +139,7 @@
                 $res=$conexion->query("select productos_venta.*, 
                 productos.nombre from productos_venta inner join productos
                 on productos_venta.id_producto = productos.id where 
-                productos_venta.id_producto = productos.id") or die($conexion->error);
+                productos_venta.id_venta= ".$f['id']) or die($conexion->error);
                 while($f2 = mysqli_fetch_array($res)){
 
             ?>
