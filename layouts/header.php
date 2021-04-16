@@ -80,7 +80,7 @@
         </a>
         <form action="./busqueda.php" class="form-inline" method="GET">
             <div class="input-group">
-                <input style="width:500px;" type="text" class="form-control searchBar letraSearch" placeholder="Hola, ¿Qué estás buscando?" name="texto">
+                <input style="width:400px;" type="text" class="form-control searchBar letraSearch" placeholder="Hola, ¿Qué estás buscando?" name="texto">
                 <div class="input-group-append">
                     <button style="text-decoration:none;" (click)="./busqueda.php" class="input-group-text iconoeks" id="basic-addon2"><i class="fas fa-search"></i></button>
                 </div>
@@ -92,6 +92,7 @@
         
         <a href="index.php" class="mr-5"><i class="fa fa-home mr-1" aria-hidden="true"></i>Inicio</a>
         <a href="about.php" class="mr-5"><i class="far fa-address-card mr-1"></i>Acerca de</a>
+        <a href="./pdf/manual.pdf" download="Manual de usuario" class="mr-5"><i class="fas fa-question-circle mr-1"></i>Ayuda</a>
         <a href="cart.php" class="mr-4 site-cart" >Carrito
           <span class="icon icon-shopping_cart"></span>
           <span class="countsoek">
